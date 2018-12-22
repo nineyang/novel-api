@@ -8,7 +8,16 @@ import org.apache.ibatis.annotations.Mapper;
  * Time: 下午5:24
  */
 
-@Mapper
 public class BookEntity {
 
+
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
