@@ -8,14 +8,8 @@ import top.hellonine.novel.novelapi.entity.BookEntity;
  * Date: 2018/12/22
  * Time: 上午10:39
  */
-
 @Service
-public class BookService {
-
-
-    public BookEntity getById(int id) {
-
-        return new BookEntity();
-    }
+public interface BookService {
+    BookEntity getById(int id);
 
 }

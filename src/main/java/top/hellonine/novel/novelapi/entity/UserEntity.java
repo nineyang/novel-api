@@ -25,6 +25,8 @@ public class UserEntity {
 
     private int updatedAt;
 
+    private String avatar;
+
 
     public long getId() {
         return id;
@@ -88,5 +90,28 @@ public class UserEntity {
 
     public void setUpdatedAt(int updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", openId='" + openId + '\'' +
+                ", unionId='" + unionId + '\'' +
+                ", status=" + status +
+                ", balance=" + balance +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                ", avatar='" + avatar + '\'' +
+                '}';
     }
 }

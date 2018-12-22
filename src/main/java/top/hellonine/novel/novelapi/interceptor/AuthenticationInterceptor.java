@@ -27,7 +27,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         }
 
         Method method = ((HandlerMethod) handler).getMethod();
-        System.out.println(method.isAnnotationPresent(LoginRequired.class));
         if (!(method.isAnnotationPresent(LoginRequired.class))) {
             return true;
         }
