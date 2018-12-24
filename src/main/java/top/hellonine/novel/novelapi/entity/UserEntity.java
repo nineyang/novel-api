@@ -21,9 +21,9 @@ public class UserEntity {
 
     private int balance;
 
-    private int createdAt;
+    private long createdAt;
 
-    private int updatedAt;
+    private long updatedAt;
 
     private String avatar;
 
@@ -76,19 +76,19 @@ public class UserEntity {
         this.balance = balance;
     }
 
-    public int getCreatedAt() {
+    public long getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(int createdAt) {
+    public void setCreatedAt(long createdAt) {
         this.createdAt = createdAt;
     }
 
-    public int getUpdatedAt() {
+    public long getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(int updatedAt) {
+    public void setUpdatedAt(long updatedAt) {
         this.updatedAt = updatedAt;
     }
 

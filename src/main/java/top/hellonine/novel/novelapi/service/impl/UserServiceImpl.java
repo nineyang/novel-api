@@ -1,6 +1,5 @@
 package top.hellonine.novel.novelapi.service.impl;
 
-import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.hellonine.novel.novelapi.entity.UserEntity;
@@ -34,6 +33,8 @@ public class UserServiceImpl implements UserService {
     public String loginUser(UserEntity user) {
         UserEntity userEntity = getByOpenId(user.getOpenId());
         if (userEntity == null) {
+            user.setCreatedAt(System.currentTimeMillis());
+            user.setUpdatedAt(System.currentTimeMillis());
             int id = userMapper.insert(user);
             userEntity = user;
         }
