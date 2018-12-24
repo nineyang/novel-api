@@ -29,6 +29,7 @@ public class AuthController {
         JSONObject jsonObject = new JSONObject();
 
         String token = userService.loginUser(userEntity);
+// todo 1. 封装response 2. 解决request 和 entity参数不一致的问题  3. 对参数校验
         jsonObject.put("code" , 200);
         jsonObject.put("token" , token);
 

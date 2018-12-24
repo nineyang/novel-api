@@ -21,6 +21,15 @@ public interface UserMapper {
     })
     UserEntity getByOpenId(String openid);
 
+    @Select("select * from users where id = #{id}")
+    @Results({
+            @Result(property = "openId", column = "open_id"),
+            @Result(property = "unionId", column = "union_id"),
+            @Result(property = "createdAt", column = "created_at"),
+            @Result(property = "updatedAt", column = "updated_at")
+    })
+    UserEntity getById(Long id);
+
 
     @Insert("insert into users(open_id , name , avatar , created_at , updated_at) values(#{openId} , #{name} , " +
             "#{avatar} , #{createdAt} , #{updatedAt})")

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import top.hellonine.novel.novelapi.annotation.LoginRequired;
 import top.hellonine.novel.novelapi.entity.BookEntity;
 import top.hellonine.novel.novelapi.service.BookService;
+import top.hellonine.novel.novelapi.util.Response;
 
 
 /**
@@ -33,8 +34,7 @@ public class BookController {
     public Object detail(@PathVariable int id) {
 
         BookEntity bookEntity = bookService.getById(id);
-
-        return bookEntity;
+        return Response.succeed("test");
     }
 
 

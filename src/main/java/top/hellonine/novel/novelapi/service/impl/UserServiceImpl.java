@@ -25,6 +25,11 @@ public class UserServiceImpl implements UserService {
         return userMapper.getByOpenId(openid);
     }
 
+    @Override
+    public UserEntity getById(Long id) {
+        return userMapper.getById(id);
+    }
+
 
     public String loginUser(UserEntity user) {
         UserEntity userEntity = getByOpenId(user.getOpenId());

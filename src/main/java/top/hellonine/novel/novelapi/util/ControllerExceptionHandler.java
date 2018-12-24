@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import top.hellonine.novel.novelapi.config.ResponseStatus;
 import top.hellonine.novel.novelapi.exception.AuthException;
 
 /**
@@ -18,11 +19,7 @@ public class ControllerExceptionHandler {
     @ResponseBody
     @ExceptionHandler(AuthException.class)
     public Object handlerAuth(Exception e) {
-//        todo 这里的response 需要统一封装
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("code", 401);
-        jsonObject.put("message", e.getMessage());
-        return jsonObject;
+        return Response.response(ResponseStatus.UNAUTHORIZED , e.getMessage());
     }
 
 }
