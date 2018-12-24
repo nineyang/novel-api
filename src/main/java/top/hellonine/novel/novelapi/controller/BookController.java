@@ -4,12 +4,10 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import top.hellonine.novel.novelapi.annotation.LoginRequired;
 import top.hellonine.novel.novelapi.entity.BookEntity;
+import top.hellonine.novel.novelapi.entity.UserEntity;
 import top.hellonine.novel.novelapi.service.BookService;
 import top.hellonine.novel.novelapi.util.Response;
 
@@ -31,10 +29,10 @@ public class BookController {
 
     @LoginRequired
     @GetMapping("{id}")
-    public Object detail(@PathVariable int id) {
+    public Object detail(@PathVariable int id, @RequestAttribute(name = "currentUser") UserEntity currentUser) {
 
         BookEntity bookEntity = bookService.getById(id);
-        return Response.succeed("test");
+        return Response.factory().set("book", bookEntity).succeed();
     }
 
 

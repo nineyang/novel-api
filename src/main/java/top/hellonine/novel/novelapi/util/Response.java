@@ -13,41 +13,37 @@ import top.hellonine.novel.novelapi.config.ResponseStatus;
 public class Response {
 
 
-    private static JSONObject jsonObject;
+    private JSONObject jsonObject = new JSONObject();
 
-    private static int code;
-
-    private static Object data;
-
-    static {
-        jsonObject = new JSONObject();
-    }
 
     public static Response factory() {
         return new Response();
     }
 
     public Response set(String key, Object value) {
-        jsonObject.clear();
         jsonObject.put(key, value);
         return this;
     }
 
-    public static JSONObject succeed(Object data) {
-        jsonObject.clear();
+    public JSONObject succeed() {
         jsonObject.put("code", ResponseStatus.SUCCEED.getCode());
-        jsonObject.put("data", data);
         return jsonObject;
     }
 
-    public static JSONObject failed(String message) {
+    public JSONObject failed(String message) {
         jsonObject.put("code", ResponseStatus.FAILED.getCode());
         jsonObject.put("msg", message);
         return jsonObject;
     }
 
-    public static JSONObject response(ResponseStatus status, Object object) {
-        jsonObject.clear();
+    public JSONObject failed(ResponseStatus status, String message) {
+        jsonObject.put("code", status.getCode());
+        jsonObject.put("msg", message);
+        return jsonObject;
+    }
+
+
+    public JSONObject response(ResponseStatus status, Object object) {
         jsonObject.put("code", status.getCode());
         jsonObject.put("data", object);
         return jsonObject;

@@ -19,7 +19,7 @@ public class ControllerExceptionHandler {
     @ResponseBody
     @ExceptionHandler(AuthException.class)
     public Object handlerAuth(Exception e) {
-        return Response.response(ResponseStatus.UNAUTHORIZED , e.getMessage());
+        return Response.factory().failed(ResponseStatus.UNAUTHORIZED, e.getMessage());
     }
 
 }

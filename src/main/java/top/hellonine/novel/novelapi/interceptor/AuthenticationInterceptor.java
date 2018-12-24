@@ -50,6 +50,13 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             throw new AuthException("user not found.");
         }
 
+        try {
+            JwtUtil.verify(user, token);
+        } catch (Exception e) {
+            throw new AuthException("token is not work, please login again.");
+        }
+
+        request.setAttribute("currentUser", user);
 
         return true;
     }

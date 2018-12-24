@@ -4,13 +4,11 @@ import com.alibaba.fastjson.JSONObject;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import top.hellonine.novel.novelapi.entity.UserEntity;
 import top.hellonine.novel.novelapi.mapper.UserMapper;
 import top.hellonine.novel.novelapi.service.UserService;
+import top.hellonine.novel.novelapi.util.Response;
 
 /**
  * User: Nine
@@ -26,14 +24,11 @@ public class AuthController {
 
     @PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE)
     public Object login(@RequestBody UserEntity userEntity) {
-        JSONObject jsonObject = new JSONObject();
 
         String token = userService.loginUser(userEntity);
-// todo 1. 封装response 2. 解决request 和 entity参数不一致的问题  3. 对参数校验
-        jsonObject.put("code" , 200);
-        jsonObject.put("token" , token);
-
-        return jsonObject;
+        return Response.factory()
+                .set("token", token)
+                .succeed();
     }
 
 }

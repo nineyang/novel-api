@@ -18,7 +18,7 @@ import java.util.Date;
 public class JwtUtil {
 
     //    设置过期时间
-    private static final long EXPIRE_TIME = 5 * 60 * 1000;
+    private static final long EXPIRE_TIME = 24 * 60 * 60 * 1000;
 
     public static String getToken(UserEntity user) {
         Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
