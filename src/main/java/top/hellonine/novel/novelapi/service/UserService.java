@@ -17,5 +17,5 @@ public interface UserService {
 
     UserEntity getById(Long id);
 
-    String loginUser(UserEntity user);
+    String loginUser(UserEntity user, String code);
 }

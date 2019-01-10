@@ -10,6 +10,9 @@ import top.hellonine.novel.novelapi.mapper.UserMapper;
 import top.hellonine.novel.novelapi.service.UserService;
 import top.hellonine.novel.novelapi.util.Response;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
+
 /**
  * User: Nine
  * Date: 2018/12/22
@@ -23,9 +26,9 @@ public class AuthController {
     private UserService userService;
 
     @PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Object login(@RequestBody UserEntity userEntity) {
+    public Object login(@RequestParam String code, @RequestBody UserEntity userEntity) {
 
-        String token = userService.loginUser(userEntity);
+        String token = userService.loginUser(userEntity, code);
         return Response.factory()
                 .set("token", token)
                 .succeed();

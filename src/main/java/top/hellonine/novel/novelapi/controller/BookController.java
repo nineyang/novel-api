@@ -32,6 +32,7 @@ public class BookController {
     public Object detail(@PathVariable int id, @RequestAttribute(name = "currentUser") UserEntity currentUser) {
 
         BookEntity bookEntity = bookService.getById(id);
+
         return Response.factory().set("book", bookEntity).succeed();
     }
 

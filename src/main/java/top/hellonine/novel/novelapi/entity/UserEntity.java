@@ -1,5 +1,6 @@
 package top.hellonine.novel.novelapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -11,6 +12,7 @@ import org.apache.ibatis.annotations.Mapper;
 public class UserEntity {
     private long id;
 
+    @JsonProperty("nickName")
     private String name;
 
     private String openId;
@@ -25,6 +27,7 @@ public class UserEntity {
 
     private long updatedAt;
 
+    @JsonProperty("avatarUrl")
     private String avatar;
 
 
